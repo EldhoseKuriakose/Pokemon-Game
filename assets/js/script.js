@@ -6,7 +6,8 @@ var ctrlBtn = document.getElementById('newGameButton');
 var nam = document.getElementById('player-name');
 var scoreBoard = document.getElementsByClassName('scoreboard')[0];
 var msg = document.getElementsByClassName('msg')[0];
-var text = "Click on New Game to Start";
+var text = "Game Over! Click on New Game to Start";
+var seconds = document.getElementById("countdown").textContent;
 
 var playingAreaWidth = gameArea.clientWidth;
 var playingAreaHeight = gameArea.clientHeight;
@@ -25,7 +26,30 @@ function newGame() {
     } else {
         nam.innerText = 'Guest';
     }
+    seconds = 12;
+    score = 0;
+    scoreDisplay.innerText = 0;
     gameState = "new";
+    countdown();
+}
+
+//countdown
+var countdown = setInterval(function(){
+    if(gameState == 'new') {
+        seconds--;
+        (seconds <= 1) ? document.getElementById("plural").textContent = "" : document.getElementById("plural").textContent = "s";
+        document.getElementById("countdown").textContent = seconds;
+        if (seconds <= 0) {
+            gameOver();
+        }
+    }
+},1000);
+
+//Game over
+function gameOver() {
+    gameState = '';
+    ctrlBtn.removeAttribute("disabled");
+    msg.innerText = text;
 }
 
 //Checking if pokemon overlaps pokeball
@@ -68,6 +92,7 @@ function checkOverlap() {
         var xy = getRandomPosition(pokeball);
         pokeball.style.top = xy[0] + 'px';
         pokeball.style.left = xy[1] + 'px';
+        seconds = 12;
     }
 }
 
