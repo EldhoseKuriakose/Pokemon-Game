@@ -51,6 +51,7 @@ function is_colliding(pokemon, pokeball) {
 	return ! not_colliding;
 };
 
+//Getting random position of pokeball
 function getRandomPosition(element) {
 	var x = gameArea.offsetHeight-element.clientHeight;
 	var y = gameArea.offsetWidth-element.clientWidth;
@@ -59,7 +60,8 @@ function getRandomPosition(element) {
 	return [randomX,randomY];
 }
 
-function moveLeft() {
+//checking if pokemon overlaps pokeball. If yes increase score by 1 and find random position for pokeball
+function checkOverlap() {
     if(is_colliding(pokemon, pokeball)) {
         score += 1;
         scoreDisplay.innerText = score;
@@ -67,6 +69,11 @@ function moveLeft() {
         pokeball.style.top = xy[0] + 'px';
         pokeball.style.left = xy[1] + 'px';
     }
+}
+
+//moveleft
+function moveLeft() {
+    checkOverlap();
     var leftDistance = pokemon.offsetLeft;
     if (leftDistance == 0) {
         return;
@@ -80,14 +87,9 @@ function moveLeft() {
     pokemon.style.left = value + "px";
 }
 
+//move right
 function moveRight() {
-    if(is_colliding(pokemon, pokeball)) {
-        score += 1;
-        scoreDisplay.innerText = score;
-        var xy = getRandomPosition(pokeball);
-        pokeball.style.top = xy[0] + 'px';
-        pokeball.style.left = xy[1] + 'px';
-    }
+    checkOverlap();
     var leftDistance = pokemon.offsetLeft;
     if (leftDistance == playingAreaWidth) {
         return;
@@ -101,14 +103,9 @@ function moveRight() {
     pokemon.style.left = value + "px";
 }
 
+//moveup
 function moveUp() {
-    if(is_colliding(pokemon, pokeball)) {
-        score += 1;
-        scoreDisplay.innerText = score;
-        var xy = getRandomPosition(pokeball);
-        pokeball.style.top = xy[0] + 'px';
-        pokeball.style.left = xy[1] + 'px';
-    }
+    checkOverlap();
     var topDistance = pokemon.offsetTop;
     if(topDistance == 0) {
         return;
@@ -122,14 +119,9 @@ function moveUp() {
     pokemon.style.top = value + "px";
 }
 
+//move down
 function moveDown() {
-    if(is_colliding(pokemon, pokeball)) {
-        score += 1;
-        scoreDisplay.innerText = score;
-        var xy = getRandomPosition(pokeball);
-        pokeball.style.top = xy[0] + 'px';
-        pokeball.style.left = xy[1] + 'px';
-    }
+    checkOverlap();
     var topDistance = pokemon.offsetTop;
     if(topDistance == playingAreaHeight) {
         return;
@@ -143,6 +135,8 @@ function moveDown() {
     pokemon.style.top = value + "px";
 }
 
+
+//Event listener for arrow key press
 document.addEventListener('keydown', function(e) {
     if(gameState == 'new') {
         if (e.keyCode == "38") {
