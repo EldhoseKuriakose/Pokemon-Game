@@ -25,10 +25,11 @@ body {
 
 #playing-area #pokemon{
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 30%;
     width: 75px;
     height: 80px;
+    z-index: 999;
 }
 
 #playing-area #pokemon img {
