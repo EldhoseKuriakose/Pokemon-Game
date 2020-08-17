@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="icon" type="image/ico" href="assets/images/pokeball.png">
+    <title>Pokemon</title>
+</head>
+<body>
+    <div id="container">
+        <div id="playing-area">
+            <div id="pokemon">
+                <img src="./assets/images/pokemon.png" alt="pokemon">
+            </div>
+            <img id="pokemon" src="./assets/images/pokemon.png" alt="pokemon">
+            <div class="pokeball">
+                <img src="./assets/images/pokeball.png" alt="pokeball">
+            </div>
+            <div class="msg">
+                Click on New Game to Start
+            </div>
+        </div>
+
+        <div id="details-area">
+            <div class="control-buttons">
+                <button onclick="newGame()">New Game</button>
+                <button onclick="resetGame()">Reset Game</button>
+            </div>
+            <div class="avatar">
+                <img src="./assets/images/avatar.jpg" alt="avatar" />
+            </div>
+            <div class="player-name">
+                <h1></h1>
+            </div>
+            <div class="scoreboard">
+                <h1>Score</h1>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
