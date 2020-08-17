@@ -2,7 +2,7 @@
 var gameArea = document.getElementById('playing-area');
 var pokemon = document.getElementById('pokemon');
 var pokeball = document.getElementById('pokeball');
-var ctrlBtns = document.getElementsByClassName('control-buttons');
+var ctrlBtn = document.getElementById('newGameButton');
 var nam = document.getElementById('player-name');
 var scoreBoard = document.getElementsByClassName('scoreboard')[0];
 var msg = document.getElementsByClassName('msg')[0];
@@ -17,7 +17,7 @@ var scoreDisplay = document.getElementById('score');
 
 //New Game
 function newGame() {
-    ctrlBtns[0].disabled = true;
+    ctrlBtn.setAttribute("disabled","disabled");
     msg.innerText = '';
     var playerName = prompt("Enter Your Name - ");
     if (playerName != "" && playerName != null) {
