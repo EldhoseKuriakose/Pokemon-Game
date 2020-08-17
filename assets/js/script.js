@@ -3,7 +3,7 @@ var gameArea = document.getElementById('playing-area');
 var pokemon = document.getElementById('pokemon');
 var pokeball = document.getElementsByClassName('pokeball')[0];
 var ctrlBtns = document.getElementsByClassName('control-buttons');
-var name = document.getElementsByClassName('player-name')[0];
+var nam = document.getElementById('player-name');
 var scoreBoard = document.getElementsByClassName('scoreboard')[0];
 var msg = document.getElementsByClassName('msg')[0];
 var text = "Click on New Game to Start";
@@ -12,11 +12,19 @@ var playingAreaWidth = gameArea.clientWidth;
 var playingAreaHeight = gameArea.clientHeight;
 var gameState = "";
 var pokemonMovingSpeed = 20;
+var score = 0;
+var scoreDisplay = document.getElementById('score');
 
 //New Game
 function newGame() {
     ctrlBtns[0].disabled = true;
     msg.innerText = '';
+    var playerName = prompt("Enter Your Name - ");
+    if (playerName != "" && playerName != null) {
+        nam.innerText = playerName;
+    } else {
+        nam.innerText = 'Guest';
+    }
     gameState = "new";
 }
 
