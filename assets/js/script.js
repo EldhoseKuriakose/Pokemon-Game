@@ -51,10 +51,21 @@ function is_colliding(pokemon, pokeball) {
 	return ! not_colliding;
 };
 
+function getRandomPosition(element) {
+	var x = gameArea.offsetHeight-element.clientHeight;
+	var y = gameArea.offsetWidth-element.clientWidth;
+	var randomX = Math.floor(Math.random()*x);
+	var randomY = Math.floor(Math.random()*y);
+	return [randomX,randomY];
+}
+
 function moveLeft() {
     if(is_colliding(pokemon, pokeball)) {
         score += 1;
         scoreDisplay.innerText = score;
+        var xy = getRandomPosition(pokeball);
+        pokeball.style.top = xy[0] + 'px';
+        pokeball.style.left = xy[1] + 'px';
     }
     var leftDistance = pokemon.offsetLeft;
     if (leftDistance == 0) {
@@ -73,6 +84,9 @@ function moveRight() {
     if(is_colliding(pokemon, pokeball)) {
         score += 1;
         scoreDisplay.innerText = score;
+        var xy = getRandomPosition(pokeball);
+        pokeball.style.top = xy[0] + 'px';
+        pokeball.style.left = xy[1] + 'px';
     }
     var leftDistance = pokemon.offsetLeft;
     if (leftDistance == playingAreaWidth) {
@@ -91,6 +105,9 @@ function moveUp() {
     if(is_colliding(pokemon, pokeball)) {
         score += 1;
         scoreDisplay.innerText = score;
+        var xy = getRandomPosition(pokeball);
+        pokeball.style.top = xy[0] + 'px';
+        pokeball.style.left = xy[1] + 'px';
     }
     var topDistance = pokemon.offsetTop;
     if(topDistance == 0) {
@@ -109,6 +126,9 @@ function moveDown() {
     if(is_colliding(pokemon, pokeball)) {
         score += 1;
         scoreDisplay.innerText = score;
+        var xy = getRandomPosition(pokeball);
+        pokeball.style.top = xy[0] + 'px';
+        pokeball.style.left = xy[1] + 'px';
     }
     var topDistance = pokemon.offsetTop;
     if(topDistance == playingAreaHeight) {
