@@ -68,8 +68,8 @@ function moveDown() {
         return;
     }
     var value;
-    if((topDistance + pokemonMovingSpeed + 280) >= playingAreaHeight) {
-        value = playingAreaWidth - 280;
+    if((topDistance + pokemonMovingSpeed + 80) >= playingAreaHeight) {
+        value = playingAreaHeight - 80;
     } else {
         value = topDistance + pokemonMovingSpeed;
     }
