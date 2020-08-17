@@ -1,7 +1,7 @@
 //initialising necessary variables
 var gameArea = document.getElementById('playing-area');
 var pokemon = document.getElementById('pokemon');
-var pokeball = document.getElementsByClassName('pokeball')[0];
+var pokeball = document.getElementById('pokeball');
 var ctrlBtns = document.getElementsByClassName('control-buttons');
 var nam = document.getElementById('player-name');
 var scoreBoard = document.getElementsByClassName('scoreboard')[0];
@@ -28,7 +28,34 @@ function newGame() {
     gameState = "new";
 }
 
+//Checking if pokemon overlaps pokeball
+function is_colliding(pokemon, pokeball) {
+	// pokemon data
+	var pokemon_height             = pokemon.clientHeight;
+	var pokemon_width              = pokemon.clientWidth;
+	var pokemon_distance_from_top  = pokemon.offsetTop + pokemon_height;
+	var pokemon_distance_from_left = pokemon.offsetLeft + pokemon_width;
+
+	// pokeball data
+	var pokeball_height             = pokeball.clientHeight;
+	var pokeball_width              = pokeball.clientWidth;
+	var pokeball_distance_from_top  = pokeball.offsetTop + pokeball_height;
+	var pokeball_distance_from_left = pokeball.offsetLeft + pokeball_width;
+
+    var not_colliding = (pokemon_distance_from_top < pokeball.offsetTop
+                        || pokemon.offsetTop > pokeball_distance_from_top
+                        || pokemon_distance_from_left < pokeball.offsetLeft
+                        || pokemon.offsetLeft > pokeball_distance_from_left);
+
+    // Return whether it IS colliding
+	return ! not_colliding;
+};
+
 function moveLeft() {
+    if(is_colliding(pokemon, pokeball)) {
+        score += 1;
+        scoreDisplay.innerText = score;
+    }
     var leftDistance = pokemon.offsetLeft;
     if (leftDistance == 0) {
         return;
@@ -43,6 +70,10 @@ function moveLeft() {
 }
 
 function moveRight() {
+    if(is_colliding(pokemon, pokeball)) {
+        score += 1;
+        scoreDisplay.innerText = score;
+    }
     var leftDistance = pokemon.offsetLeft;
     if (leftDistance == playingAreaWidth) {
         return;
@@ -57,6 +88,10 @@ function moveRight() {
 }
 
 function moveUp() {
+    if(is_colliding(pokemon, pokeball)) {
+        score += 1;
+        scoreDisplay.innerText = score;
+    }
     var topDistance = pokemon.offsetTop;
     if(topDistance == 0) {
         return;
@@ -71,6 +106,10 @@ function moveUp() {
 }
 
 function moveDown() {
+    if(is_colliding(pokemon, pokeball)) {
+        score += 1;
+        scoreDisplay.innerText = score;
+    }
     var topDistance = pokemon.offsetTop;
     if(topDistance == playingAreaHeight) {
         return;

@@ -37,12 +37,17 @@ body {
     height: 100%;
 }
 
-#playing-area .pokeball img {
+#playing-area #pokeball {
     position: absolute;
     left: 50%;
     top: 50%;
     width: 30px;
     height: 30px;
+}
+
+#playing-area #pokeball img {
+    width: 100%;
+    height: 100%;
 }
 
 #playing-area .msg {
