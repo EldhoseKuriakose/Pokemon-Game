@@ -9,3 +9,6 @@
 2. Click `Reset Game` to reset game.
 3. Goal is to catch the pokeballs within 12 seconds.
 4. If didn't catch the ball within 12 seconds game will over.
+
+### Live
+https://confident-ardinghelli-471d4b.netlify.app/
